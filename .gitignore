@@ -1,36 +1,56 @@
-# 编译产物
+# ===== 编译产物（Keil / GCC）=====
 build/
 dist/
 out/
-*.exe
+Objects/
+Listings/
+DebugConfig/
 *.o
 *.obj
+*.d
+*.crf
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.lnp
+*.sct
+*.dep
+*.iex
+*.htm
+*.build_log.htm
+*.exe
 *.a
 *.lib
 *.pdb
-*.hex
-*.bin
-*.elf
-*.map
-*.axf
-*.lst
 
-# IDE / 编辑器
+# ===== Keil 工程文件 =====
+# .uvprojx / .uvoptx 必须保留，否则工程无法打开
+*.uvguix.*
+*.uvgui.*
+*.bak
+*.uvopt.bak
+*.uvproj.bak
+JLinkLog.txt
+JLinkSettings.ini
+
+# ===== CubeMX =====
+# .ioc 必须保留
+*.ioc.bak
+
+# ===== IDE / 编辑器 =====
 .vscode/
 .idea/
-*.uvprojx
-*.uvoptx
-*.uvguix.*
-*.ioc.bak
 *.code-workspace
 
-# 系统文件
+# ===== 系统文件 =====
 Thumbs.db
 desktop.ini
 .DS_Store
 
-# 临时文件
+# ===== 临时文件 =====
 *.log
 *.tmp
-*.bak
 *.swp
