@@ -1,0 +1,36 @@
+# 编译产物
+build/
+dist/
+out/
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.hex
+*.bin
+*.elf
+*.map
+*.axf
+*.lst
+
+# IDE / 编辑器
+.vscode/
+.idea/
+*.uvprojx
+*.uvoptx
+*.uvguix.*
+*.ioc.bak
+*.code-workspace
+
+# 系统文件
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 临时文件
+*.log
+*.tmp
+*.bak
+*.swp
