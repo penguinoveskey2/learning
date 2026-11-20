@@ -55,7 +55,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+#define DEMO 3
 /* USER CODE END 0 */
 
 /**
@@ -89,17 +89,24 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+	#if DEMO == 2
 	HAL_TIM_Base_Start_IT(&htim2);
+	#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		
+		#if DEMO==1
+		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_5);
+		HAL_Delay(250);
+	#endif
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	
   }
   /* USER CODE END 3 */
 }
@@ -144,6 +151,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+# if DEMO==2
 	void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM2)
@@ -151,6 +159,25 @@ void SystemClock_Config(void)
 		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 	}
 }
+#endif
+		
+
+# if DEMO==3
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    uint32_t now=HAL_GetTick();
+    
+    if (GPIO_Pin==GPIO_PIN_0)
+    {
+        static uint32_t penguin=0;
+        if((now-penguin)>20)
+        {
+            penguin=now;
+            HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+        }
+    }
+}
+# endif
 /* USER CODE END 4 */
 
 /**
